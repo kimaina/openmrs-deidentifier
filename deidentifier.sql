@@ -43,6 +43,11 @@ insert into random_names (name, rid) select distinct(trim(given_name)) as name, 
 # insert into random_names (name, rid) select distinct(trim(middle_name)) as name, null from person_name where middle_name is not null and not exists (select * from random_names where name = trim(middle_name));
 # insert into random_names (name, rid) select distinct(trim(family_name)) as name, null from person_name where family_name is not null and not exists (select * from random_names where name = trim(family_name));
 
+# remove the telephone numbers
+UPDATE person_attribute
+SET value = NULL
+WHERE person_attribute_type_id=8;  # change the person_attribute_type_id referring to the telephone numbers
+
 drop procedure if exists randomize_names;
 delimiter //
 create procedure randomize_names()
