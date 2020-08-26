@@ -198,7 +198,7 @@ from
 
 	
 -- 
--- Dumbify the usernames and clear out login info
+-- Dumbify the usernames and clear out login info:  Password: Admin123
 --
 update
 	users
